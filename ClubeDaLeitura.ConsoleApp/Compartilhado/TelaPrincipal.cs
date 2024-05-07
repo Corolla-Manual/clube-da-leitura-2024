@@ -1,6 +1,6 @@
 ﻿namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 {
-    internal class TelaPrincipal
+    internal static class TelaPrincipal
     {
         public static char ApresentarMenuPrincipal()
         {
