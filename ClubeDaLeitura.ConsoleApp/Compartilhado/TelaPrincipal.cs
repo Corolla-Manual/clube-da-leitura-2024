@@ -12,7 +12,7 @@
 
             Console.WriteLine();
 
-            Console.WriteLine("1 - Cadastro de ");
+            Console.WriteLine("1 - Cadastro de Amigos");
 
 
             Console.WriteLine("S - Sair");

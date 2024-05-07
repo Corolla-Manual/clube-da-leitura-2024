@@ -1,9 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloMulta
 {
@@ -16,6 +12,16 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloMulta
         {
             Valor = valor;
             EstaPago = estapago;
+        }
+
+        public override ArrayList Validar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AtualizarRegistro(EntidadeBase novoRegistro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

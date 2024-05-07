@@ -1,10 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 {
@@ -22,7 +17,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -16} | {3,-20} | {4, -15}",
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -15}",
                 "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço"
             );
 
@@ -34,7 +29,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -16} | {3,-20} | {4, -15}",
+                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -15}",
                     amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco
                 );
             }
@@ -56,7 +51,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.WriteLine("Digite o endereço: ");
             string endereco = Console.ReadLine();
 
-            Amigo amigo = new Amigo(nome, nomeresponsavel ,telefone, endereco);
+            Amigo amigo = new Amigo(nome, nomeresponsavel, telefone, endereco);
 
             return amigo;
         }

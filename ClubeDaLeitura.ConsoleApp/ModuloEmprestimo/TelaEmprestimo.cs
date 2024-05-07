@@ -1,13 +1,17 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
     internal class TelaEmprestimo : TelaBase
     {
+        public override void VisualizarRegistros(bool exibirTitulo)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override EntidadeBase ObterRegistro()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

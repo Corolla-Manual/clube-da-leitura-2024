@@ -1,11 +1,5 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 {
@@ -47,7 +41,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 
         protected override EntidadeBase ObterRegistro()
         {
-            
+            Reserva reserva = null;
+            return reserva;
         }
     }
 }
