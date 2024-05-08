@@ -17,8 +17,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -15}",
-                "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço"
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -20}",
+                "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço", "Possui Multa Aberta"
             );
 
             ArrayList amigosCadastrados = repositorio.SelecionarTodos();
@@ -29,8 +29,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -15}",
-                    amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco
+                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -20}",
+                    amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco, amigo.Multa.MultaAberta
                 );
             }
 
@@ -59,8 +59,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
         public void CadastrarEntidadeTeste()
         {
             Amigo amigo = new Amigo("Roberto", "Luis", "49999657372", "Rua Correia Pinto");
-
             repositorio.Cadastrar(amigo);
+
+            Amigo amigo2 = new Amigo("Carlos", "Leandro", "49987452136", "Rua Belizário Ramos");
+            repositorio.Cadastrar(amigo2);
         }
     }
 }

@@ -1,27 +1,14 @@
-﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using System.Collections;
-
-namespace ClubeDaLeitura.ConsoleApp.ModuloMulta
+﻿namespace ClubeDaLeitura.ConsoleApp.ModuloMulta
 {
-    internal class Multa : EntidadeBase
+    internal class Multa
     {
         public double Valor { get; set; }
-        public bool EstaPago { get; set; }
+        public bool MultaAberta { get; set; }
 
-        public Multa(double valor, bool estapago)
+        public Multa()
         {
-            Valor = valor;
-            EstaPago = estapago;
-        }
-
-        public override ArrayList Validar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void AtualizarRegistro(EntidadeBase novoRegistro)
-        {
-            throw new NotImplementedException();
+            Valor = 5;
+            MultaAberta = false;
         }
     }
 }

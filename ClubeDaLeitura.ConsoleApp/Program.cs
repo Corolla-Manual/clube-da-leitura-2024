@@ -41,11 +41,14 @@ namespace ClubeDaLeitura.ConsoleApp
             RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
 
             TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
-            telaEmprestimo.tipoEntidade = "Emprestimo";
+            telaEmprestimo.tipoEntidade = "Empréstimo";
             telaEmprestimo.repositorio = repositorioEmprestimo;
+            telaEmprestimo.telaRevista = telaRevista;
+            telaEmprestimo.telaAmigo = telaAmigo;
             telaEmprestimo.repositorioRevista = repositorioRevista;
             telaEmprestimo.repositorioAmigo = repositorioAmigo;
             telaEmprestimo.CadastrarEntidadeTeste();
+            telaEmprestimo.ChecaValidadeMultas();
 
             //Inicialização Reserva
             RepositorioReserva repositorioReserva = new RepositorioReserva();

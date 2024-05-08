@@ -1,11 +1,6 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloMulta;
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 {
@@ -23,6 +18,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             NomeResponsavel = nomeresponsavel;
             Telefone = telefone;
             Endereco = endereco;
+            Multa = new Multa();
         }
 
         public override ArrayList Validar()
