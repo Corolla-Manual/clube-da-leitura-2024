@@ -1,6 +1,7 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloReserva;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
 namespace ClubeDaLeitura.ConsoleApp
@@ -30,9 +31,22 @@ namespace ClubeDaLeitura.ConsoleApp
 
             TelaRevista telaRevista = new TelaRevista();
             telaRevista.tipoEntidade = "Revista";
+            telaRevista.telaCaixa = telaCaixa;
             telaRevista.repositorio = repositorioRevista;
             telaRevista.repositorioCaixa = repositorioCaixa;
             telaRevista.CadastrarEntidadeTeste();
+
+            //Inicialização Reserva
+            RepositorioReserva repositorioReserva = new RepositorioReserva();
+
+            TelaReserva telaReserva = new TelaReserva();
+            telaReserva.tipoEntidade = "Reserva";
+            telaReserva.telaRevista = telaRevista;
+            telaReserva.telaAmigo = telaAmigo;
+            telaReserva.repositorio = repositorioReserva;
+            telaReserva.repositorioRevista = repositorioRevista;
+            telaReserva.repositorioAmigo = repositorioAmigo;
+            telaReserva.CadastrarEntidadeTeste();
 
             while (true)
             {
@@ -49,6 +63,8 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = telaCaixa;
                 if (opcaoPrincipalEscolhida == '3')
                     tela = telaRevista;
+                if (opcaoPrincipalEscolhida == '4')
+                    tela = telaReserva;
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 
