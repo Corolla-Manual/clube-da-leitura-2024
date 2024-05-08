@@ -76,6 +76,8 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = telaRevista;
                 if (opcaoPrincipalEscolhida == '4')
                     tela = telaReserva;
+                if (opcaoPrincipalEscolhida == '5')
+                    tela = telaEmprestimo;
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 
