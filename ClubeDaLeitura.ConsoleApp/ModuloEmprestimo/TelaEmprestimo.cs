@@ -22,7 +22,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}}",
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista"
             );
 
@@ -34,9 +34,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -16} | {3,-20} | {4, -20}",
-                    emprestimo.Id, emprestimo.DataEmprestimo, emprestimo.DataDevolucao,
-                    emprestimo.Amigo.Nome, emprestimo.Revista.Titulo
+                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                    emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
+                    emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo
                 );
             }
 
