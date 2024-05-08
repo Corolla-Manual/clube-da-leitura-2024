@@ -9,5 +9,15 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 {
     internal class RepositorioReserva : RepositorioBase
     {
+        public void ChecaValidacaoReservas()
+        {
+            foreach (Reserva reservas in registros)
+            {
+                if (DateTime.Now > reservas.DataLimite)
+                {
+                    reservas.Expirado = true;
+                }
+            }
+        }
     }
 }

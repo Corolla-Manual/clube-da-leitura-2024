@@ -59,11 +59,13 @@ namespace ClubeDaLeitura.ConsoleApp
             telaReserva.repositorio = repositorioReserva;
             telaReserva.repositorioRevista = repositorioRevista;
             telaReserva.repositorioAmigo = repositorioAmigo;
+            telaReserva.repositorioEmprestimo = repositorioEmprestimo;
             telaReserva.CadastrarEntidadeTeste();
 
             while (true)
             {
                 telaEmprestimo.ChecaValidadeMultas();
+                telaReserva.ChecaValidadeReserva();
 
                 char opcaoPrincipalEscolhida = TelaPrincipal.ApresentarMenuPrincipal();
 
@@ -101,6 +103,9 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
+
+                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '4')
+                    telaReserva.RealizarEmprestimo();
 
                 else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '1')
                     telaAmigo.VisualizarRegistrosComMultas(true);
