@@ -71,8 +71,16 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             Caixa caixa = (Caixa)repositorioCaixa.SelecionarPorId(1);
             Revista revista = new Revista("Spider Man", 1, 1980, caixa);
             caixa.Revista.Add(revista);
-            repositorioCaixa.SelecionarPorId(1).AtualizarRegistro(caixa);
             repositorio.Cadastrar(revista);
+
+            Caixa caixa2 = (Caixa)repositorioCaixa.SelecionarPorId(2);
+            Revista revista2 = new Revista("Batman", 1, 1982, caixa2);
+            caixa2.Revista.Add(revista2);
+            repositorio.Cadastrar(revista2);
+
+            Revista revista3 = new Revista("Homen de Ferro", 1, 1981, caixa);
+            caixa.Revista.Add(revista3);
+            repositorio.Cadastrar(revista3);
         }
     }
 }

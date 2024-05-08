@@ -70,11 +70,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
         public void CadastrarEntidadeTeste()
         {
             Amigo amigo = (Amigo)repositorioAmigo.SelecionarPorId(1);
-            Revista revista = (Revista)repositorioRevista.SelecionarPorId(1);
+            Revista revista = (Revista)repositorioRevista.SelecionarPorId(3);
             Reserva reserva = new Reserva(amigo, revista);
             repositorio.Cadastrar(reserva);
 
-            Amigo amigo1 = (Amigo)repositorioAmigo.SelecionarPorId(1);
+            Amigo amigo1 = (Amigo)repositorioAmigo.SelecionarPorId(3);
             Revista revista1 = (Revista)repositorioRevista.SelecionarPorId(1);
             Reserva reserva1 = new Reserva(amigo1, revista1);
             reserva1.DataLimite = DateTime.Parse("05/05/2024");
@@ -101,36 +101,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 
             repositorioEmprestimo.Cadastrar(emprestimo);
             ExibirMensagem("Emprestimo realizado com sucesso", ConsoleColor.Green);
-            Console.ReadKey();
-        }
-
-        private void BuscarReservasEmAberto()
-        {
-            Console.WriteLine("Visualizando Reservas...");
-
-            Console.WriteLine();
-
-            Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20}",
-                "Id", "Data da Reserva", "Data Limite", "Amigo", "Revista"
-            );
-
-            ArrayList reservasCadastradas = repositorio.SelecionarTodos();
-
-            foreach (Reserva reserva in reservasCadastradas)
-            {
-                if (reserva == null)
-                    continue;
-
-                if(!reserva.Expirado)
-                Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20}",
-                    reserva.Id, reserva.DataReserva.ToShortDateString(),
-                    reserva.DataLimite.ToShortDateString(), reserva.Amigo.Nome, reserva.Revista.Titulo
-                );
-            }
-
-            Console.WriteLine();
         }
 
         public override char ApresentarMenu()
@@ -157,6 +127,34 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             char operacaoEscolhida = Convert.ToChar(Console.ReadLine());
 
             return operacaoEscolhida;
+        }
+        private void BuscarReservasEmAberto()
+        {
+            Console.WriteLine("Visualizando Reservas...");
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20}",
+                "Id", "Data da Reserva", "Data Limite", "Amigo", "Revista"
+            );
+
+            ArrayList reservasCadastradas = repositorio.SelecionarTodos();
+
+            foreach (Reserva reserva in reservasCadastradas)
+            {
+                if (reserva == null)
+                    continue;
+
+                if (!reserva.Expirado)
+                    Console.WriteLine(
+                        "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20}",
+                        reserva.Id, reserva.DataReserva.ToShortDateString(),
+                        reserva.DataLimite.ToShortDateString(), reserva.Amigo.Nome, reserva.Revista.Titulo
+                    );
+            }
+
+            Console.WriteLine();
         }
     }
 }
