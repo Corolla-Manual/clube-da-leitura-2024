@@ -15,6 +15,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             Etiqueta = etiqueta;
             Cor = cor;
             DiasEmprestimo = diasEmprestimo;
+            Revista = new ArrayList();
         }
 
         public override ArrayList Validar()

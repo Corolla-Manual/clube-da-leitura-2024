@@ -61,6 +61,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             Revista revista = new Revista(titulo, edicao, dias, caixa);
 
             caixa.Revista.Add(revista);
+            repositorioCaixa.SelecionarPorId(idCaixa).AtualizarRegistro(caixa);
 
             return revista;
         }
@@ -69,6 +70,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
         {
             Caixa caixa = (Caixa)repositorioCaixa.SelecionarPorId(1);
             Revista revista = new Revista("Spider Man", 1, 1980, caixa);
+            caixa.Revista.Add(revista);
+            repositorioCaixa.SelecionarPorId(1).AtualizarRegistro(caixa);
             repositorio.Cadastrar(revista);
         }
     }

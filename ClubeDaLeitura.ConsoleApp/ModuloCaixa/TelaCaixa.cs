@@ -27,7 +27,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             {
                 if (caixa == null)
                     continue;
-
                 Console.WriteLine(
                     "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4, -15}",
                     caixa.Id, caixa.Etiqueta, caixa.Cor, caixa.DiasEmprestimo, caixa.Revista.Count
