@@ -98,6 +98,12 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
+
+                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '1')
+                    telaAmigo.VisualizarRegistrosComMultas(true);
+
+                else if (operacaoEscolhida == '6' && opcaoPrincipalEscolhida == '1')
+                    telaAmigo.QuitarMulta();
             }
             Console.ReadLine();
         }

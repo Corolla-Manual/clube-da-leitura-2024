@@ -30,12 +30,58 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 
                 Console.WriteLine(
                     "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -20}",
-                    amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco, amigo.Multa.MultaAberta
+                    amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco,
+                    amigo.Multa.MultaAberta ? "Sim" : "Não"
                 );
             }
 
             Console.ReadLine();
             Console.WriteLine();
+        }
+        public void VisualizarRegistrosComMultas(bool exibirTitulo)
+        {
+            if (exibirTitulo)
+            {
+                ApresentarCabecalho();
+
+                Console.WriteLine("Visualizando Amigos...");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço"
+            );
+
+            ArrayList amigosCadastrados = repositorio.SelecionarTodos();
+
+            foreach (Amigo amigo in amigosCadastrados)
+            {
+                if (amigo == null)
+                    continue;
+
+                if (amigo.Multa.MultaAberta)
+                    Console.WriteLine(
+                        "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                        amigo.Id, amigo.Nome, amigo.NomeResponsavel, amigo.Telefone, amigo.Endereco
+                    );
+            }
+
+            Console.ReadLine();
+            Console.WriteLine();
+        }
+        public void QuitarMulta()
+        {
+            ApresentarCabecalho();
+
+            VisualizarRegistrosComMultas(false);
+            Console.Write("Digite o Id do amigo que quer quitar a multa: ");
+            int idAmigo = int.Parse(Console.ReadLine());
+
+            Amigo amigo = (Amigo)repositorio.SelecionarPorId(idAmigo);
+
+            amigo.Multa.MultaAberta = false;
         }
         protected override EntidadeBase ObterRegistro()
         {
@@ -55,7 +101,32 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 
             return amigo;
         }
+        public override char ApresentarMenu()
+        {
+            Console.Clear();
 
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"        Gestão de {tipoEntidade}s        ");
+            Console.WriteLine("----------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"1 - Cadastrar {tipoEntidade}");
+            Console.WriteLine($"2 - Editar {tipoEntidade}");
+            Console.WriteLine($"3 - Excluir {tipoEntidade}");
+            Console.WriteLine($"4 - Visualizar {tipoEntidade}s");
+            Console.WriteLine($"5 - Visualizar {tipoEntidade}s com multa em aberto");
+            Console.WriteLine($"6 - Quitar multa de {tipoEntidade}s");
+
+            Console.WriteLine("S - Voltar");
+
+            Console.WriteLine();
+
+            Console.Write("Escolha uma das opções: ");
+            char operacaoEscolhida = Convert.ToChar(Console.ReadLine());
+
+            return operacaoEscolhida;
+        }
         public void CadastrarEntidadeTeste()
         {
             Amigo amigo = new Amigo("Roberto", "Luis", "49999657372", "Rua Correia Pinto");
