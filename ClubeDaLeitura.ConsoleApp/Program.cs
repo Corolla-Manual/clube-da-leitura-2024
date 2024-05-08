@@ -48,7 +48,6 @@ namespace ClubeDaLeitura.ConsoleApp
             telaEmprestimo.repositorioRevista = repositorioRevista;
             telaEmprestimo.repositorioAmigo = repositorioAmigo;
             telaEmprestimo.CadastrarEntidadeTeste();
-            telaEmprestimo.ChecaValidadeMultas();
 
             //Inicialização Reserva
             RepositorioReserva repositorioReserva = new RepositorioReserva();
@@ -64,6 +63,8 @@ namespace ClubeDaLeitura.ConsoleApp
 
             while (true)
             {
+                telaEmprestimo.ChecaValidadeMultas();
+
                 char opcaoPrincipalEscolhida = TelaPrincipal.ApresentarMenuPrincipal();
 
                 if (opcaoPrincipalEscolhida == 'S' || opcaoPrincipalEscolhida == 's')
@@ -81,6 +82,8 @@ namespace ClubeDaLeitura.ConsoleApp
                     tela = telaReserva;
                 if (opcaoPrincipalEscolhida == '5')
                     tela = telaEmprestimo;
+
+
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 
