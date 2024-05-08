@@ -97,8 +97,13 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 
             Reserva reserva = (Reserva)repositorio.SelecionarPorId(idReserva);
 
-            Emprestimo emprestimo = new Emprestimo(reserva.Amigo, reserva.Revista);
+            if (reserva.Amigo.Multa.MultaAberta)
+            {
+                ExibirMensagem($"O amigo {reserva.Amigo.Nome} possui uma multa em aberto!", ConsoleColor.Red);
+                return;
+            }
 
+            Emprestimo emprestimo = new Emprestimo(reserva.Amigo, reserva.Revista);
             repositorioEmprestimo.Cadastrar(emprestimo);
             ExibirMensagem("Emprestimo realizado com sucesso", ConsoleColor.Green);
         }
