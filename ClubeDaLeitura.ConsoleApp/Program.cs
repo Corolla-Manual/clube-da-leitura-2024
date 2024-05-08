@@ -1,6 +1,7 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloCaixa;
+using ClubeDaLeitura.ConsoleApp.ModuloEmprestimo;
 using ClubeDaLeitura.ConsoleApp.ModuloReserva;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 
@@ -35,6 +36,16 @@ namespace ClubeDaLeitura.ConsoleApp
             telaRevista.repositorio = repositorioRevista;
             telaRevista.repositorioCaixa = repositorioCaixa;
             telaRevista.CadastrarEntidadeTeste();
+
+            //Inicialização Empréstimo
+            RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
+
+            TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
+            telaEmprestimo.tipoEntidade = "Emprestimo";
+            telaEmprestimo.repositorio = repositorioEmprestimo;
+            telaEmprestimo.repositorioRevista = repositorioRevista;
+            telaEmprestimo.repositorioAmigo = repositorioAmigo;
+            telaEmprestimo.CadastrarEntidadeTeste();
 
             //Inicialização Reserva
             RepositorioReserva repositorioReserva = new RepositorioReserva();
