@@ -15,7 +15,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
         public Emprestimo(Amigo amigo, Revista revista)
         {
-            Concluido = false;
+            Concluido = false ;
             Amigo = amigo;
             Revista = revista;
             DataEmprestimo = DateTime.Now;
