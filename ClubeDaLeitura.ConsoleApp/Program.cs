@@ -103,7 +103,7 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '4')
                     telaReserva.RealizarEmprestimo();
-              
+
                 else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '5')
                     telaEmprestimo.VisualizarRegistrosDoDia(true);
 
@@ -116,9 +116,8 @@ namespace ClubeDaLeitura.ConsoleApp
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
 
-                //Conluir emprestimo.
                 else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '5')
-                    telaAmigo.VisualizarRegistrosComMultas(true);
+                    telaEmprestimo.Devolucao();
 
                 else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '1')
                     telaAmigo.VisualizarRegistrosComMultas(true);

@@ -70,12 +70,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Revista revista = (Revista)repositorioRevista.SelecionarPorId(1);
             Emprestimo emprestimo = new Emprestimo(amigo, revista);
             repositorio.Cadastrar(emprestimo);
+            ValidaRevistaEmprestada(emprestimo);
 
             Amigo amigo2 = (Amigo)repositorioAmigo.SelecionarPorId(2);
             Revista revista2 = (Revista)repositorioRevista.SelecionarPorId(2);
             Emprestimo emprestimo2 = new Emprestimo(amigo2, revista2);
             emprestimo2.DataDevolucao = DateTime.Parse("05/05/2024");
             repositorio.Cadastrar(emprestimo2);
+            ValidaRevistaEmprestada(emprestimo2);
         }
         public override void Registrar()
         {
@@ -100,7 +102,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 ApresentarErros(erros);
                 return;
             }
-
+            ValidaRevistaEmprestada(emprestimo);
             repositorio.Cadastrar(emprestimo);
 
             ExibirMensagem($"O {tipoEntidade} foi cadastrado com sucesso!", ConsoleColor.Green);
@@ -158,14 +160,14 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 if (emprestimo == null)
                     continue;
 
-                if (emprestimo.DataDevolucao > DateTime.Now)
+                if (emprestimo.DataDevolucao > DateTime.Now && !emprestimo.Concluido)
                 {
                     Console.WriteLine(
                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
                    emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
-                   emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo                
+                   emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo
                    );
-                }                            
+                }
             }
 
             Console.ReadLine();
@@ -206,6 +208,36 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             Console.ReadLine();
             Console.WriteLine();
+        }
+        public void Devolucao()
+        {
+
+            VisualizarRegistrosDoDia(true);
+
+            Console.WriteLine("Digite o ID do emprestimo que deseja devolver: ");
+            int idEmprestimo = int.Parse(Console.ReadLine());
+
+            Emprestimo emprestimo = (Emprestimo)repositorio.SelecionarPorId(idEmprestimo);
+
+            if (emprestimo.Concluido && emprestimo.DataDevolucao < DateTime.Now)
+            {
+                ExibirMensagem("Empréstimo já devolvido ou expirado!", ConsoleColor.Red);
+            }
+
+            emprestimo.Concluido = true;
+            repositorio.SelecionarPorId(idEmprestimo).AtualizarRegistro(emprestimo);
+
+            Revista revista = (Revista)repositorioRevista.SelecionarPorId(emprestimo.Revista.Id);
+            revista.Emprestado = false;
+            repositorioRevista.SelecionarPorId(revista.Id).AtualizarRegistro(revista);
+
+            ExibirMensagem("Devolução realizada com sucesso!", ConsoleColor.Green);
+        }
+        private void ValidaRevistaEmprestada(Emprestimo emprestimo)
+        {
+            Revista revista = (Revista)repositorioRevista.SelecionarPorId(emprestimo.Revista.Id);
+            revista.Emprestado = true;
+            repositorioRevista.SelecionarPorId(revista.Id).AtualizarRegistro(revista);
         }
     }
 }
