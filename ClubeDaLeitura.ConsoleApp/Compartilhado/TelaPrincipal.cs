@@ -12,11 +12,11 @@
 
             Console.WriteLine();
 
-            Console.WriteLine("1 - Cadastro de Amigos");
-            Console.WriteLine("2 - Cadastro de Caixas");
-            Console.WriteLine("3 - Cadastro de Revistas");
-            Console.WriteLine("4 - Cadastro de Reservas");
-            Console.WriteLine("5 - Cadastro de Emprestimo");
+            Console.WriteLine("1 - Gerenciamento de Amigos");
+            Console.WriteLine("2 - Gerenciamento de Caixas");
+            Console.WriteLine("3 - Gerenciamento de Revistas");
+            Console.WriteLine("4 - Gerenciamento de Reservas");
+            Console.WriteLine("5 - Gerenciamento de Empréstimo");
             Console.WriteLine("S - Sair");
 
             Console.WriteLine();

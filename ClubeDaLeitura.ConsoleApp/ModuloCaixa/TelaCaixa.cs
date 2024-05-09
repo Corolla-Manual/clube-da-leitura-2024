@@ -54,8 +54,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 
         public void CadastrarEntidadeTeste()
         {
-            Caixa medicamento = new Caixa("HQ Marvel", "Vermelho", 5);
-            repositorio.Cadastrar(medicamento);
+            Caixa caixa = new Caixa("HQ Marvel", "Vermelho", 5);
+            repositorio.Cadastrar(caixa);
+
+            Caixa caixa2 = new Caixa("DC Comics", "Azul", 7);
+            repositorio.Cadastrar(caixa2);
         }
     }
 }

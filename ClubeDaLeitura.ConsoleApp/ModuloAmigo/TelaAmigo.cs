@@ -134,6 +134,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 
             Amigo amigo2 = new Amigo("Carlos", "Leandro", "49987452136", "Rua Belizário Ramos");
             repositorio.Cadastrar(amigo2);
+
+            Amigo amigo3 = new Amigo("Clóvis", "Jonas", "49996857412", "Rua Zacarias Abel");
+            repositorio.Cadastrar(amigo3);
         }
     }
 }
