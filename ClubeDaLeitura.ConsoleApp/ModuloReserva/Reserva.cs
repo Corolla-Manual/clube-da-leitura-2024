@@ -7,6 +7,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 {
     internal class Reserva : EntidadeBase
     {
+        public bool Concluido { get; set; }
         public bool Expirado { get; set; }
         public DateTime DataReserva { get; set; }
         public DateTime DataLimite { get; set; }
@@ -16,6 +17,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
         public Reserva(Amigo amigo, Revista revista)
         {
             Expirado = false;
+            Concluido = false;
             DataReserva = DateTime.Now;
             DataLimite = DataReserva.AddDays(2);
             Amigo = amigo;
@@ -39,6 +41,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             Reserva novasInformacoes = (Reserva)novoRegistro;
 
             this.Expirado = novasInformacoes.Expirado;
+            this.Concluido = novasInformacoes.Concluido;
             this.DataReserva = novasInformacoes.DataReserva;
             this.DataLimite = novasInformacoes.DataLimite;
             this.Amigo = novasInformacoes.Amigo;

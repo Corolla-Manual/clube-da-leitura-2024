@@ -1,5 +1,4 @@
 ﻿using ClubeDaLeitura.ConsoleApp.Compartilhado;
-using ClubeDaLeitura.ConsoleApp.ModuloReserva;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
@@ -15,16 +14,5 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 }
             }
         }
-        public void ChecaValidacaoStatus()
-        {
-            foreach (Emprestimo emprestimo in registros)
-            {
-                if ()
-                {
-                    emprestimo.Concluido = true;
-                }
-            }
-        }
-
     }
 }

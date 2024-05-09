@@ -2,7 +2,6 @@
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using System.Collections;
-using System.Runtime.Intrinsics.Arm;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
@@ -111,7 +110,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             RepositorioEmprestimo repositorioEmprestimo = (RepositorioEmprestimo)repositorio;
             repositorioEmprestimo.ValidaDataLimiteEmprestimo();
         }
-
         public override char ApresentarMenu()
         {
             Console.Clear();
@@ -126,7 +124,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine($"2 - Visualizar todos os {tipoEntidade}s");
             Console.WriteLine($"3 - Visualizar todos os {tipoEntidade}s do dia");
             Console.WriteLine($"4 - Visualizar todos os {tipoEntidade}s do mês");
-            Console.WriteLine($"3 - Concluir {tipoEntidade}s");
+            Console.WriteLine($"5 - Concluir {tipoEntidade}s");
 
             Console.WriteLine("S - Voltar");
 

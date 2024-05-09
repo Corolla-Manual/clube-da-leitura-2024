@@ -28,8 +28,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20} | {5, -20}",
-                "Id", "Expirado", "Data da Reserva", "Data Limite", "Amigo", "Revista"
+                "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20} | {5, -20} | {6,-10}",
+                "Id", "Expirado", "Data da Reserva", "Data Limite", "Amigo", "Revista", "Concluído"
             );
 
             ArrayList reservasCadastradas = repositorio.SelecionarTodos();
@@ -40,9 +40,10 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20} | {5, -20}",
+                    "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20} | {5, -20} | {6,-10}",
                     reserva.Id, reserva.Expirado ? "Sim" : "Não", reserva.DataReserva.ToShortDateString(),
-                    reserva.DataLimite.ToShortDateString(), reserva.Amigo.Nome, reserva.Revista.Titulo
+                    reserva.DataLimite.ToShortDateString(), reserva.Amigo.Nome, reserva.Revista.Titulo,
+                    reserva.Concluido ? "Sim" : "Não"
                 );
             }
 
@@ -102,6 +103,18 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
                 return;
             }
 
+            if (reserva.Expirado)
+            {
+                ExibirMensagem($"Impossível realizar empréstimo, a reserva esta expirada!", ConsoleColor.Red);
+                return;
+            }
+
+            if (reserva.Concluido)
+            {
+                ExibirMensagem($"A reserva já foi emprestada!", ConsoleColor.Red);
+                return;
+            }
+            reserva.Concluido = true;
             Emprestimo emprestimo = new Emprestimo(reserva.Amigo, reserva.Revista);
             repositorioEmprestimo.Cadastrar(emprestimo);
             ExibirMensagem("Emprestimo realizado com sucesso", ConsoleColor.Green);
@@ -148,7 +161,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
                 if (reserva == null)
                     continue;
 
-                if (!reserva.Expirado)
+                if (!reserva.Expirado && !reserva.Concluido)
                     Console.WriteLine(
                         "{0, -10} | {1, -20} | {2, -16} | {3,-15} | {4, -20}",
                         reserva.Id, reserva.DataReserva.ToShortDateString(),
