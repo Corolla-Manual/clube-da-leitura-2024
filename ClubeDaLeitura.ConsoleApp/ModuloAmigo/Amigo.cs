@@ -12,6 +12,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
         public string Endereco { get; set; }
         public Multa Multa { get; set; }
 
+
         public Amigo(string nome, string nomeresponsavel, string telefone, string endereco)
         {
             Nome = nome;

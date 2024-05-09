@@ -34,8 +34,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                     amigo.Multa.MultaAberta ? "Sim" : "Não"
                 );
             }
-
-            Console.ReadLine();
+            Console.ReadKey();
             Console.WriteLine();
         }
         public void VisualizarRegistrosComMultas(bool exibirTitulo)
@@ -68,7 +67,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                     );
             }
 
-            Console.ReadLine();
+            Console.ReadKey();
             Console.WriteLine();
         }
         public void QuitarMulta()
@@ -81,7 +80,16 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 
             Amigo amigo = (Amigo)repositorio.SelecionarPorId(idAmigo);
 
+            if (!amigo.Multa.MultaAberta)
+            {
+                ExibirMensagem($"O amigo {amigo.Nome} não possui divida!", ConsoleColor.Red);
+                return;
+            }
             amigo.Multa.MultaAberta = false;
+            amigo.Multa.Pago = true;
+            repositorio.SelecionarPorId(amigo.Id).AtualizarRegistro(amigo);
+
+            ExibirMensagem($"A multa foi quitada com sucesso!", ConsoleColor.Green);
         }
         protected override EntidadeBase ObterRegistro()
         {
@@ -94,7 +102,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.Write("Digite o telefone: ");
             string telefone = Console.ReadLine();
 
-            Console.WriteLine("Digite o endereço: ");
+            Console.Write("Digite o endereço: ");
             string endereco = Console.ReadLine();
 
             Amigo amigo = new Amigo(nome, nomeresponsavel, telefone, endereco);
