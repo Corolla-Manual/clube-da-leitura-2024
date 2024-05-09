@@ -11,7 +11,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         public TelaRevista telaRevista = null;
         public RepositorioAmigo repositorioAmigo = null;
         public RepositorioRevista repositorioRevista = null;
-
         public override void VisualizarRegistros(bool exibirTitulo)
         {
             if (exibirTitulo)
@@ -46,7 +45,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.ReadLine();
             Console.WriteLine();
         }
-
         protected override EntidadeBase ObterRegistro()
         {
             telaAmigo.VisualizarRegistros(false);
@@ -63,19 +61,20 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             return emprestimo;
         }
-
         public void CadastrarEntidadeTeste()
         {
             Amigo amigo = (Amigo)repositorioAmigo.SelecionarPorId(1);
             Revista revista = (Revista)repositorioRevista.SelecionarPorId(1);
             Emprestimo emprestimo = new Emprestimo(amigo, revista);
             repositorio.Cadastrar(emprestimo);
+            ValidaRevistaEmprestada(emprestimo);
 
             Amigo amigo2 = (Amigo)repositorioAmigo.SelecionarPorId(2);
             Revista revista2 = (Revista)repositorioRevista.SelecionarPorId(2);
             Emprestimo emprestimo2 = new Emprestimo(amigo2, revista2);
             emprestimo2.DataDevolucao = DateTime.Parse("05/05/2024");
             repositorio.Cadastrar(emprestimo2);
+            ValidaRevistaEmprestada(emprestimo2);
         }
         public override void Registrar()
         {
@@ -101,7 +100,13 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 return;
             }
 
-            repositorio.Cadastrar(emprestimo);
+            if (emprestimo.Revista.Emprestado)
+            {
+                ExibirMensagem($"A revista {emprestimo.Revista.Titulo} já esta emprestada!", ConsoleColor.Red);
+                return;
+            }
+
+            ValidaRevistaEmprestada(emprestimo);
 
             ExibirMensagem($"O {tipoEntidade} foi cadastrado com sucesso!", ConsoleColor.Green);
         }
@@ -135,5 +140,17 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             return operacaoEscolhida;
         }
+        public void Decolucao()
+        {
+
+        }
+        private void ValidaRevistaEmprestada(Emprestimo emprestimo)
+        {
+            emprestimo.Revista.Emprestado = true;
+            repositorioRevista.SelecionarPorId(emprestimo.Revista.Id).AtualizarRegistro(emprestimo.Revista);
+            repositorio.Cadastrar(emprestimo);
+        }
+
+
     }
 }

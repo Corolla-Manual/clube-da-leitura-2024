@@ -20,8 +20,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4,-20}",
-                "Id", "Título", "Edição", "Ano de publicação", "Caixa"
+                "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4,-20} | {5,-10}",
+                "Id", "Título", "Edição", "Ano de publicação", "Caixa", "Emprestado"
             );
 
             ArrayList revistasCadastradas = repositorio.SelecionarTodos();
@@ -32,8 +32,9 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4, -20}",
-                    revista.Id, revista.Titulo, revista.Edicao, revista.AnoPublicacao, revista.Caixa.Etiqueta
+                    "{0, -10} | {1, -20} | {2, -10} | {3,-20} | {4, -20} | {5,-10}",
+                    revista.Id, revista.Titulo, revista.Edicao, revista.AnoPublicacao, revista.Caixa.Etiqueta,
+                    revista.Emprestado ? "Sim" : "Não"
                 );
             }
 

@@ -6,6 +6,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 {
     internal class Revista : EntidadeBase
     {
+        public bool Emprestado { get; set; }
         public string Titulo { get; set; }
         public int Edicao { get; set; }
         public int AnoPublicacao { get; set; }
@@ -13,6 +14,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 
         public Revista(string titulo, int edicao, int anoPublicacao, Caixa caixa)
         {
+            Emprestado = false;
             Titulo = titulo;
             Edicao = edicao;
             AnoPublicacao = anoPublicacao;
@@ -43,6 +45,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             Revista revista = (Revista)novoRegistro;
 
             this.Titulo = revista.Titulo;
+            this.Emprestado = revista.Emprestado;
             this.Edicao = revista.Edicao;
             this.AnoPublicacao = revista.AnoPublicacao;
             this.Caixa = revista.Caixa;
