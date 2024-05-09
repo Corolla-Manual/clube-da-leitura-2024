@@ -7,6 +7,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
     internal class Emprestimo : EntidadeBase
     {
+        public bool Concluido { get; set; }
         public Amigo Amigo { get; set; }
         public Revista Revista { get; set; }
         public DateTime DataEmprestimo { get; set; }
@@ -14,6 +15,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
         public Emprestimo(Amigo amigo, Revista revista)
         {
+            Concluido = false ;
             Amigo = amigo;
             Revista = revista;
             DataEmprestimo = DateTime.Now;

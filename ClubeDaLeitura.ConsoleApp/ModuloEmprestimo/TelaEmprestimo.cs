@@ -2,6 +2,7 @@
 using ClubeDaLeitura.ConsoleApp.ModuloAmigo;
 using ClubeDaLeitura.ConsoleApp.ModuloRevista;
 using System.Collections;
+using System.Runtime.Intrinsics.Arm;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
@@ -24,8 +25,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine();
 
             Console.WriteLine(
-                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
-                "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista"
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -20}",
+                "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
             );
 
             ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
@@ -38,7 +39,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 Console.WriteLine(
                     "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
                     emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
-                    emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo
+                    emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo,
+                    emprestimo.Concluido ? "Sim" : "Nâo"
                 );
             }
 
