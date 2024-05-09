@@ -102,6 +102,11 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 ApresentarErros(erros);
                 return;
             }
+            if (!emprestimo.Revista.Emprestado)
+            {
+                ExibirMensagem("Revista já emprestada", ConsoleColor.Red);
+                return;
+            }
             ValidaRevistaEmprestada(emprestimo);
             repositorio.Cadastrar(emprestimo);
 
