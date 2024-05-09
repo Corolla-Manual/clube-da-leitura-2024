@@ -36,7 +36,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                     continue;
 
                 Console.WriteLine(
-                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                    "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -10}",
                     emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
                     emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo,
                     emprestimo.Concluido ? "Sim" : "Nâo"
@@ -50,12 +50,12 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
         protected override EntidadeBase ObterRegistro()
         {
             telaAmigo.VisualizarRegistros(false);
-            Console.WriteLine("Digite o ID do Amigo: ");
+            Console.Write("Digite o ID do Amigo: ");
             int idAmigo = int.Parse(Console.ReadLine());
             Amigo amigo = (Amigo)repositorioAmigo.SelecionarPorId(idAmigo);
 
             telaRevista.VisualizarRegistros(false);
-            Console.WriteLine("Digite o ID da Revista: ");
+            Console.Write("Digite o ID da Revista: ");
             int idRevista = int.Parse(Console.ReadLine());
             Revista revista = (Revista)repositorioRevista.SelecionarPorId(idRevista);
 
@@ -214,7 +214,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             VisualizarRegistrosDoDia(true);
 
-            Console.WriteLine("Digite o ID do emprestimo que deseja devolver: ");
+            Console.Write("Digite o ID do emprestimo que deseja devolver: ");
             int idEmprestimo = int.Parse(Console.ReadLine());
 
             Emprestimo emprestimo = (Emprestimo)repositorio.SelecionarPorId(idEmprestimo);
