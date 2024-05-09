@@ -60,7 +60,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             telaRevista.VisualizarRegistros(false);
             Console.Write("Informe o ID da revista que vai ser emprestada: ");
             int idRevista = int.Parse(Console.ReadLine());
-            Revista revista = (Revista)repositorio.SelecionarPorId(idRevista);
+            Revista revista = (Revista)repositorioRevista.SelecionarPorId(idRevista);
 
             Reserva reserva = new Reserva(amigo, revista);
 

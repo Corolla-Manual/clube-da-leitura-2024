@@ -94,7 +94,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.Write("Digite o telefone: ");
             string telefone = Console.ReadLine();
 
-            Console.WriteLine("Digite o endereço: ");
+            Console.Write("Digite o endereço: ");
             string endereco = Console.ReadLine();
 
             Amigo amigo = new Amigo(nome, nomeresponsavel, telefone, endereco);

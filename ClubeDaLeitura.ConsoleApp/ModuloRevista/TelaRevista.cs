@@ -47,6 +47,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             string titulo = Console.ReadLine();
 
             Console.Write("Digite a edição da revista: ");
+            
             int edicao = int.Parse(Console.ReadLine());
 
             Console.Write("Digite o ano de publicação da revista: ");
