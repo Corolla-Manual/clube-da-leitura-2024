@@ -103,17 +103,15 @@ namespace ClubeDaLeitura.ConsoleApp
 
                 else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '4')
                     telaReserva.RealizarEmprestimo();
-
-                //Emprestimos do dia
+              
                 else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '5')
-                    telaEmprestimo.VisualizarRegistros(false);
+                    telaEmprestimo.VisualizarRegistrosDoDia(true);
 
                 else if (operacaoEscolhida == '3')
                     tela.Excluir();
 
-                //emprestimos do mes
                 else if (operacaoEscolhida == '4' && opcaoPrincipalEscolhida == '5')
-                    telaEmprestimo.VisualizarRegistros(false);
+                    telaEmprestimo.VisualizarRegistrosDoMes(true);
 
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
