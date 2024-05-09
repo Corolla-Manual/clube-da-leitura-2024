@@ -135,5 +135,77 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 
             return operacaoEscolhida;
         }
+        public void VisualizarRegistrosDoDia(bool exibirTitulo)
+        {
+            if (exibirTitulo)
+            {
+                ApresentarCabecalho();
+
+                Console.WriteLine("Visualizando Emprestimos em aberto do dia...");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista"
+            );
+
+            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+
+            foreach (Emprestimo emprestimo in emprestimosCadastradas)
+            {
+                if (emprestimo == null)
+                    continue;
+
+                if (emprestimo.DataDevolucao > DateTime.Now)
+                {
+                    Console.WriteLine(
+                   "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20}",
+                   emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
+                   emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo                
+                   );
+                }                            
+            }
+
+            Console.ReadLine();
+            Console.WriteLine();
+        }
+        public void VisualizarRegistrosDoMes(bool exibirTitulo)
+        {
+            if (exibirTitulo)
+            {
+                ApresentarCabecalho();
+
+                Console.WriteLine("Visualizando Emprestimos em aberto do mês...");
+            }
+
+            Console.WriteLine();
+
+            Console.WriteLine(
+                "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -10}",
+                "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
+            );
+
+            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+
+            foreach (Emprestimo emprestimo in emprestimosCadastradas)
+            {
+                if (emprestimo == null)
+                    continue;
+
+                if (emprestimo.DataEmprestimo.Month == DateTime.Now.Month)
+                {
+                    Console.WriteLine(
+                   "{0, -10} | {1, -20} | {2, -20} | {3,-20} | {4, -20} | {5, -10}",
+                   emprestimo.Id, emprestimo.DataEmprestimo.ToShortDateString(),
+                   emprestimo.DataDevolucao.ToShortDateString(), emprestimo.Amigo.Nome, emprestimo.Revista.Titulo, emprestimo.Concluido ? "Sim" : "Não"
+                   );
+                }
+            }
+
+            Console.ReadLine();
+            Console.WriteLine();
+        }
     }
 }
