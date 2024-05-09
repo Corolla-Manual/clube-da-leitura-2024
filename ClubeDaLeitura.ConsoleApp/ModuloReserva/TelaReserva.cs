@@ -49,7 +49,6 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             Console.ReadLine();
             Console.WriteLine();
         }
-
         protected override EntidadeBase ObterRegistro()
         {
             telaAmigo.VisualizarRegistros(false);
@@ -119,10 +118,8 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
             Console.WriteLine();
 
             Console.WriteLine($"1 - Cadastrar {tipoEntidade}");
-            Console.WriteLine($"2 - Editar {tipoEntidade}");
-            Console.WriteLine($"3 - Excluir {tipoEntidade}");
-            Console.WriteLine($"4 - Visualizar {tipoEntidade}s");
-            Console.WriteLine($"5 - Realizar empréstimo da {tipoEntidade}s");
+            Console.WriteLine($"2 - Visualizar {tipoEntidade}s");
+            Console.WriteLine($"3 - Realizar empréstimo da {tipoEntidade}s");
 
             Console.WriteLine("S - Voltar");
 

@@ -95,17 +95,32 @@ namespace ClubeDaLeitura.ConsoleApp
                 if (operacaoEscolhida == '1')
                     tela.Registrar();
 
+                else if (operacaoEscolhida == '2' && (opcaoPrincipalEscolhida == '4' || opcaoPrincipalEscolhida == '5'))
+                    tela.VisualizarRegistros(true);
+
                 else if (operacaoEscolhida == '2')
                     tela.Editar();
+
+                else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '4')
+                    telaReserva.RealizarEmprestimo();
+
+                //Emprestimos do dia
+                else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '5')
+                    telaEmprestimo.VisualizarRegistros(false);
 
                 else if (operacaoEscolhida == '3')
                     tela.Excluir();
 
+                //emprestimos do mes
+                else if (operacaoEscolhida == '4' && opcaoPrincipalEscolhida == '5')
+                    telaEmprestimo.VisualizarRegistros(false);
+
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
 
-                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '4')
-                    telaReserva.RealizarEmprestimo();
+                //Conluir emprestimo.
+                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '5')
+                    telaAmigo.VisualizarRegistrosComMultas(true);
 
                 else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '1')
                     telaAmigo.VisualizarRegistrosComMultas(true);

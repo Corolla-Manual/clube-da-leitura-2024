@@ -109,5 +109,31 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             RepositorioEmprestimo repositorioEmprestimo = (RepositorioEmprestimo)repositorio;
             repositorioEmprestimo.ValidaDataLimiteEmprestimo();
         }
+
+        public override char ApresentarMenu()
+        {
+            Console.Clear();
+
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine($"        Gestão de {tipoEntidade}s        ");
+            Console.WriteLine("----------------------------------------");
+
+            Console.WriteLine();
+
+            Console.WriteLine($"1 - Cadastrar {tipoEntidade}");
+            Console.WriteLine($"2 - Visualizar todos os {tipoEntidade}s");
+            Console.WriteLine($"3 - Visualizar todos os {tipoEntidade}s do dia");
+            Console.WriteLine($"4 - Visualizar todos os {tipoEntidade}s do mês");
+            Console.WriteLine($"3 - Concluir {tipoEntidade}s");
+
+            Console.WriteLine("S - Voltar");
+
+            Console.WriteLine();
+
+            Console.Write("Escolha uma das opções: ");
+            char operacaoEscolhida = Convert.ToChar(Console.ReadLine());
+
+            return operacaoEscolhida;
+        }
     }
 }
