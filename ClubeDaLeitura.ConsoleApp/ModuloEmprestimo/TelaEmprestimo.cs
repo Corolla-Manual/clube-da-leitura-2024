@@ -28,7 +28,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
             );
 
-            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {
@@ -158,7 +158,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista"
             );
 
-            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {
@@ -194,7 +194,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
             );
 
-            ArrayList emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {

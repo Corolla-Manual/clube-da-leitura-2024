@@ -21,7 +21,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                 "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço", "Possui Multa Aberta"
             );
 
-            ArrayList amigosCadastrados = repositorio.SelecionarTodos();
+            List<EntidadeBase> amigosCadastrados = repositorio.SelecionarTodos();
 
             foreach (Amigo amigo in amigosCadastrados)
             {
@@ -53,7 +53,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                 "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço"
             );
 
-            ArrayList amigosCadastrados = repositorio.SelecionarTodos();
+            List<EntidadeBase> amigosCadastrados = repositorio.SelecionarTodos();
 
             foreach (Amigo amigo in amigosCadastrados)
             {

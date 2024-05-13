@@ -21,7 +21,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                 "Id", "Etiqueta", "Cor", "Dias de empréstimo", "Quantidade de Revistas"
             );
 
-            ArrayList caixasCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> caixasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Caixa caixa in caixasCadastradas)
             {

@@ -24,7 +24,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
                 "Id", "Título", "Edição", "Ano de publicação", "Caixa", "Emprestado"
             );
 
-            ArrayList revistasCadastradas = repositorio.SelecionarTodos();
+            List<EntidadeBase> revistasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Revista revista in revistasCadastradas)
             {
