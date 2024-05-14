@@ -66,7 +66,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             //Inicialização Reserva
             repositorioReserva = new RepositorioReserva();
 
-            TelaReserva telaReserva = new TelaReserva();
+             telaReserva = new TelaReserva();
             telaReserva.tipoEntidade = "Reserva";
             telaReserva.telaRevista = telaRevista;
             telaReserva.telaAmigo = telaAmigo;

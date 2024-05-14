@@ -12,15 +12,16 @@ namespace ClubeDaLeitura.ConsoleApp
         static void Main(string[] args)
         {       
             TelaPrincipal telaPrincipal = new TelaPrincipal();
-            TelaReserva telaReservas = new TelaReserva();
-            TelaEmprestimo telaEmprestimos = new TelaEmprestimo();
 
             while (true)
             {
                 ITelaCadastravel tela = telaPrincipal.ApresentarMenuPrincipal();
 
-                telaEmprestimos.ChecaValidadeMultas();
-                telaReservas.ChecaValidadeReserva();
+                if (tela is TelaReserva telaReservas)
+                    telaReservas.ChecaValidadeReserva();
+
+                if (tela is TelaEmprestimo telaEmprestimos)
+                    telaEmprestimos.ChecaValidadeMultas();
 
                 if (tela == null)
                     break;
