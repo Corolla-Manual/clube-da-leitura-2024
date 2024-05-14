@@ -25,10 +25,10 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 
         public TelaPrincipal()
         {
-            //Incialização Amigo
+            //Inicialização Amigo
             repositorioAmigo = new RepositorioAmigo();
 
-            TelaAmigo telaAmigo = new TelaAmigo();
+            telaAmigo = new TelaAmigo();
             telaAmigo.tipoEntidade = "Amigo";
             telaAmigo.repositorio = repositorioAmigo;
             telaAmigo.CadastrarEntidadeTeste();
@@ -36,7 +36,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             //Inicialização Caixa
             repositorioCaixa = new RepositorioCaixa();
 
-            TelaCaixa telaCaixa = new TelaCaixa();
+            telaCaixa = new TelaCaixa();
             telaCaixa.tipoEntidade = "Caixa";
             telaCaixa.repositorio = repositorioCaixa;
             telaCaixa.CadastrarEntidadeTeste();
@@ -44,7 +44,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             //Inicialização Revista
             repositorioRevista = new RepositorioRevista();
 
-            TelaRevista telaRevista = new TelaRevista();
+            telaRevista = new TelaRevista();
             telaRevista.tipoEntidade = "Revista";
             telaRevista.telaCaixa = telaCaixa;
             telaRevista.repositorio = repositorioRevista;
@@ -54,7 +54,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             //Inicialização Empréstimo
             repositorioEmprestimo = new RepositorioEmprestimo();
 
-            TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
+            telaEmprestimo = new TelaEmprestimo();
             telaEmprestimo.tipoEntidade = "Empréstimo";
             telaEmprestimo.repositorio = repositorioEmprestimo;
             telaEmprestimo.telaRevista = telaRevista;
@@ -66,7 +66,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             //Inicialização Reserva
             repositorioReserva = new RepositorioReserva();
 
-             telaReserva = new TelaReserva();
+            telaReserva = new TelaReserva();
             telaReserva.tipoEntidade = "Reserva";
             telaReserva.telaRevista = telaRevista;
             telaReserva.telaAmigo = telaAmigo;
