@@ -26,7 +26,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
         public TelaPrincipal()
         {
             //Incialização Amigo
-            RepositorioAmigo repositorioAmigo = new RepositorioAmigo();
+            repositorioAmigo = new RepositorioAmigo();
 
             TelaAmigo telaAmigo = new TelaAmigo();
             telaAmigo.tipoEntidade = "Amigo";
@@ -34,7 +34,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             telaAmigo.CadastrarEntidadeTeste();
 
             //Inicialização Caixa
-            RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
+            repositorioCaixa = new RepositorioCaixa();
 
             TelaCaixa telaCaixa = new TelaCaixa();
             telaCaixa.tipoEntidade = "Caixa";
@@ -42,7 +42,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             telaCaixa.CadastrarEntidadeTeste();
 
             //Inicialização Revista
-            RepositorioRevista repositorioRevista = new RepositorioRevista();
+            repositorioRevista = new RepositorioRevista();
 
             TelaRevista telaRevista = new TelaRevista();
             telaRevista.tipoEntidade = "Revista";
@@ -52,7 +52,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             telaRevista.CadastrarEntidadeTeste();
 
             //Inicialização Empréstimo
-            RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
+            repositorioEmprestimo = new RepositorioEmprestimo();
 
             TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
             telaEmprestimo.tipoEntidade = "Empréstimo";
@@ -64,7 +64,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             telaEmprestimo.CadastrarEntidadeTeste();
 
             //Inicialização Reserva
-            RepositorioReserva repositorioReserva = new RepositorioReserva();
+            repositorioReserva = new RepositorioReserva();
 
             TelaReserva telaReserva = new TelaReserva();
             telaReserva.tipoEntidade = "Reserva";
