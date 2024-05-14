@@ -17,21 +17,24 @@ namespace ClubeDaLeitura.ConsoleApp
 
             while (true)
             {
+                ITelaCadastravel tela = telaPrincipal.ApresentarMenuPrincipal();
+
                 telaEmprestimos.ChecaValidadeMultas();
                 telaReservas.ChecaValidadeReserva();
-
-                ITelaCadastravel tela = telaPrincipal.ApresentarMenuPrincipal();
 
                 if (tela == null)
                     break;
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 
-                if (tela is TelaEmprestimo telaEmprestimo)               
+                if (tela is TelaEmprestimo telaEmprestimo)
                     GerenciarEmprestimos(operacaoEscolhida, telaEmprestimo);
-                
-                else if (tela is TelaReserva telaReserva)               
-                    GerenciarReservas(operacaoEscolhida, telaReserva);                
+
+                else if (tela is TelaReserva telaReserva)
+                    GerenciarReservas(operacaoEscolhida, telaReserva);
+
+                else if (tela is TelaAmigo telaAmigo)
+                    GerenciarAmigos(operacaoEscolhida, telaAmigo);
 
                 if (operacaoEscolhida == 'S')
                         continue;
@@ -39,38 +42,14 @@ namespace ClubeDaLeitura.ConsoleApp
                 if (operacaoEscolhida == '1')
                     tela.Registrar();
 
-                else if (operacaoEscolhida == '2' && (opcaoPrincipalEscolhida == '4' || opcaoPrincipalEscolhida == '5'))
-                    tela.VisualizarRegistros(true);
-
                 else if (operacaoEscolhida == '2')
                     tela.Editar();
-
-                else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '4')
-                    telaReserva.RealizarEmprestimo();
-
-                else if (operacaoEscolhida == '3' && opcaoPrincipalEscolhida == '5')
-                    telaEmprestimo.VisualizarRegistrosDoDia(true);
 
                 else if (operacaoEscolhida == '3')
                     tela.Excluir();
 
-                else if (operacaoEscolhida == '4' && opcaoPrincipalEscolhida == '5')
-                    telaEmprestimo.VisualizarRegistrosDoMes(true);
-
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
-
-                else if (operacaoEscolhida == '5' && tela is TelaAmigo telaAmigo)
-                    telaEmprestimo.Devolucao();
-
-                else if (operacaoEscolhida == '5' && tela is TelaAmigo telaAmigo)
-                    telaAmigo.VisualizarRegistrosComMultas(true);
-
-             //   else if (operacaoEscolhida == '6' && opcaoPrincipalEscolhida == '1')
-             //       telaAmigo.QuitarMulta();
-                
-                else if (operacaoEscolhida == '6' && tela is TelaAmigo telaAmigo)
-                    telaAmigo.QuitarMulta();
             }
             Console.ReadLine();
         }
@@ -80,7 +59,7 @@ namespace ClubeDaLeitura.ConsoleApp
             if (operacaoEscolhida == '1')
                 telaReserva.Registrar();
 
-            else if (operacaoEscolhida == 2)
+            else if (operacaoEscolhida == '3')
                 telaReserva.RealizarEmprestimo();
 
             else if (operacaoEscolhida == '2')
@@ -92,11 +71,38 @@ namespace ClubeDaLeitura.ConsoleApp
             if (operacaoEscolhida == '1')
                 telaEmprestimo.Registrar();
 
-            if (operacaoEscolhida == '2')
+            if (operacaoEscolhida == '5')
                 telaEmprestimo.Devolucao();
 
-            if (operacaoEscolhida == '3')
+            if (operacaoEscolhida == '2')
                 telaEmprestimo.VisualizarRegistros(true);
+
+            if (operacaoEscolhida == '3')
+                telaEmprestimo.VisualizarRegistrosDoDia(true);
+
+            if (operacaoEscolhida == '4')
+                telaEmprestimo.VisualizarRegistrosDoMes(true);
+        }
+
+        private static void GerenciarAmigos(char operacaoEscolhida, TelaAmigo telaAmigo)
+        {
+            if (operacaoEscolhida == '1')
+                telaAmigo.Registrar();
+
+            if (operacaoEscolhida == '2')
+                telaAmigo.Editar();
+
+            if (operacaoEscolhida == '3')
+                telaAmigo.Excluir();
+
+            if (operacaoEscolhida == '4')
+                telaAmigo.VisualizarRegistros(true);
+
+            if (operacaoEscolhida == '5')
+                telaAmigo.VisualizarRegistrosComMultas(true);
+
+            if (operacaoEscolhida == '6')
+                telaAmigo.QuitarMulta();
         }
     }
 }
