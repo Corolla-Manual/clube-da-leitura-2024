@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloReserva
 {
-    internal class RepositorioReserva : RepositorioBase
+    internal class RepositorioReserva : RepositorioBase<Reserva>
     {
         public void ChecaValidacaoReservas()
         {

@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 {
-    internal class TelaAmigo : TelaBase
+    internal class TelaAmigo : TelaBase<Amigo>, ITelaCadastravel
     {
         public override void VisualizarRegistros(bool exibirTitulo)
         {
@@ -21,7 +21,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                 "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço", "Possui Multa Aberta"
             );
 
-            List<EntidadeBase> amigosCadastrados = repositorio.SelecionarTodos();
+            List<Amigo> amigosCadastrados = repositorio.SelecionarTodos();
 
             foreach (Amigo amigo in amigosCadastrados)
             {
@@ -53,7 +53,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
                 "Id", "Nome", "Nome do Responsável", "Telefone", "Endereço"
             );
 
-            List<EntidadeBase> amigosCadastrados = repositorio.SelecionarTodos();
+            List<Amigo> amigosCadastrados = repositorio.SelecionarTodos();
 
             foreach (Amigo amigo in amigosCadastrados)
             {
@@ -78,7 +78,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
             Console.Write("Digite o Id do amigo que quer quitar a multa: ");
             int idAmigo = int.Parse(Console.ReadLine());
 
-            Amigo amigo = (Amigo)repositorio.SelecionarPorId(idAmigo);
+            Amigo amigo = repositorio.SelecionarPorId(idAmigo);
 
             if (!amigo.Multa.MultaAberta)
             {
@@ -91,7 +91,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloAmigo
 
             ExibirMensagem($"A multa foi quitada com sucesso!", ConsoleColor.Green);
         }
-        protected override EntidadeBase ObterRegistro()
+        protected override Amigo ObterRegistro()
         {
             Console.Write("Digite o nome: ");
             string nome = Console.ReadLine();

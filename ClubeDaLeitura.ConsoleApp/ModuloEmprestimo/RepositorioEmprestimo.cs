@@ -2,7 +2,7 @@
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
-    internal class RepositorioEmprestimo : RepositorioBase
+    internal class RepositorioEmprestimo : RepositorioBase<Emprestimo>
     {
         public void ValidaDataLimiteEmprestimo()
         {

@@ -2,10 +2,10 @@
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 {
-    internal abstract class TelaBase
+    internal abstract class TelaBase<T> where T : EntidadeBase
     {
         public string tipoEntidade = "";
-        public RepositorioBase repositorio = null;
+        public RepositorioBase<T> repositorio = null;
 
         public virtual char ApresentarMenu()
         {
@@ -40,7 +40,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 
             Console.WriteLine();
 
-            EntidadeBase entidade = ObterRegistro();
+            T entidade = ObterRegistro();
 
             ArrayList erros = entidade.Validar();
 
@@ -76,7 +76,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 
             Console.WriteLine();
 
-            EntidadeBase entidade = ObterRegistro();
+            T entidade = ObterRegistro();
 
             ArrayList erros = entidade.Validar();
 
@@ -164,7 +164,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             Console.ReadLine();
         }
 
-        protected abstract EntidadeBase ObterRegistro();
+        protected abstract T ObterRegistro();
     }
 }
 

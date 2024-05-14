@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
-    internal class TelaCaixa : TelaBase
+    internal class TelaCaixa : TelaBase<Caixa>, ITelaCadastravel
     {
         public override void VisualizarRegistros(bool exibirTitulo)
         {
@@ -21,7 +21,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
                 "Id", "Etiqueta", "Cor", "Dias de empréstimo", "Quantidade de Revistas"
             );
 
-            List<EntidadeBase> caixasCadastradas = repositorio.SelecionarTodos();
+            List<Caixa> caixasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Caixa caixa in caixasCadastradas)
             {
@@ -36,7 +36,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
             Console.ReadLine();
             Console.WriteLine();
         }
-        protected override EntidadeBase ObterRegistro()
+        protected override Caixa ObterRegistro()
         {
             Console.Write("Digite o nome da etiqueta: ");
             string etiqueta = Console.ReadLine();

@@ -2,24 +2,24 @@
 
 namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 {
-    internal abstract class RepositorioBase
+    internal abstract class RepositorioBase<T> where T : EntidadeBase
     {
-        protected List<EntidadeBase> registros = new List<EntidadeBase>();
+        protected List<T> registros = new List<T>();
 
         protected int contadorId = 1;
 
-        public void Cadastrar(EntidadeBase novoRegistro)
+        public void Cadastrar(T novoRegistro)
         {
             novoRegistro.Id = contadorId++;
 
             registros.Add(novoRegistro);
         }
 
-        public bool Editar(int id, EntidadeBase novaEntidade)
+        public bool Editar(int id, T novaEntidade)
         {
             novaEntidade.Id = id;
 
-            foreach (EntidadeBase entidade in registros)
+            foreach (T entidade in registros)
             {
                 if (entidade == null)
                     continue;
@@ -37,7 +37,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 
         public bool Excluir(int id)
         {
-            foreach (EntidadeBase entidade in registros)
+            foreach (T entidade in registros)
             {
                 if (entidade == null)
                     continue;
@@ -52,14 +52,14 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
             return false;
         }
 
-        public List<EntidadeBase> SelecionarTodos()
+        public List<T> SelecionarTodos()
         {
             return registros;
         }
 
-        public EntidadeBase SelecionarPorId(int id)
+        public T SelecionarPorId(int id)
         {
-            foreach (EntidadeBase entidade in registros)
+            foreach (T entidade in registros)
             {
 
                 if (entidade == null)
@@ -74,7 +74,7 @@ namespace ClubeDaLeitura.ConsoleApp.Compartilhado
 
         public bool Existe(int id)
         {
-            foreach (EntidadeBase entidade in registros)
+            foreach (T entidade in registros)
             {
                 if (entidade == null)
                     continue;

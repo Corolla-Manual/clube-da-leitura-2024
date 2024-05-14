@@ -10,87 +10,31 @@ namespace ClubeDaLeitura.ConsoleApp
     internal class Program
     {
         static void Main(string[] args)
-        {
-            //Incialização Amigo
-            RepositorioAmigo repositorioAmigo = new RepositorioAmigo();
-
-            TelaAmigo telaAmigo = new TelaAmigo();
-            telaAmigo.tipoEntidade = "Amigo";
-            telaAmigo.repositorio = repositorioAmigo;
-            telaAmigo.CadastrarEntidadeTeste();
-
-            //Inicialização Caixa
-            RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
-
-            TelaCaixa telaCaixa = new TelaCaixa();
-            telaCaixa.tipoEntidade = "Caixa";
-            telaCaixa.repositorio = repositorioCaixa;
-            telaCaixa.CadastrarEntidadeTeste();
-
-            //Inicialização Revista
-            RepositorioRevista repositorioRevista = new RepositorioRevista();
-
-            TelaRevista telaRevista = new TelaRevista();
-            telaRevista.tipoEntidade = "Revista";
-            telaRevista.telaCaixa = telaCaixa;
-            telaRevista.repositorio = repositorioRevista;
-            telaRevista.repositorioCaixa = repositorioCaixa;
-            telaRevista.CadastrarEntidadeTeste();
-
-            //Inicialização Empréstimo
-            RepositorioEmprestimo repositorioEmprestimo = new RepositorioEmprestimo();
-
-            TelaEmprestimo telaEmprestimo = new TelaEmprestimo();
-            telaEmprestimo.tipoEntidade = "Empréstimo";
-            telaEmprestimo.repositorio = repositorioEmprestimo;
-            telaEmprestimo.telaRevista = telaRevista;
-            telaEmprestimo.telaAmigo = telaAmigo;
-            telaEmprestimo.repositorioRevista = repositorioRevista;
-            telaEmprestimo.repositorioAmigo = repositorioAmigo;
-            telaEmprestimo.CadastrarEntidadeTeste();
-
-            //Inicialização Reserva
-            RepositorioReserva repositorioReserva = new RepositorioReserva();
-
-            TelaReserva telaReserva = new TelaReserva();
-            telaReserva.tipoEntidade = "Reserva";
-            telaReserva.telaRevista = telaRevista;
-            telaReserva.telaAmigo = telaAmigo;
-            telaReserva.repositorio = repositorioReserva;
-            telaReserva.repositorioRevista = repositorioRevista;
-            telaReserva.repositorioAmigo = repositorioAmigo;
-            telaReserva.repositorioEmprestimo = repositorioEmprestimo;
-            telaReserva.CadastrarEntidadeTeste();
+        {       
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            TelaReserva telaReservas = new TelaReserva();
+            TelaEmprestimo telaEmprestimos = new TelaEmprestimo();
 
             while (true)
             {
-                telaEmprestimo.ChecaValidadeMultas();
-                telaReserva.ChecaValidadeReserva();
+                telaEmprestimos.ChecaValidadeMultas();
+                telaReservas.ChecaValidadeReserva();
 
-                char opcaoPrincipalEscolhida = TelaPrincipal.ApresentarMenuPrincipal();
+                ITelaCadastravel tela = telaPrincipal.ApresentarMenuPrincipal();
 
-                if (opcaoPrincipalEscolhida == 'S' || opcaoPrincipalEscolhida == 's')
+                if (tela == null)
                     break;
-
-                TelaBase tela = null;
-
-                if (opcaoPrincipalEscolhida == '1')
-                    tela = telaAmigo;
-                if (opcaoPrincipalEscolhida == '2')
-                    tela = telaCaixa;
-                if (opcaoPrincipalEscolhida == '3')
-                    tela = telaRevista;
-                if (opcaoPrincipalEscolhida == '4')
-                    tela = telaReserva;
-                if (opcaoPrincipalEscolhida == '5')
-                    tela = telaEmprestimo;
-
-
 
                 char operacaoEscolhida = tela.ApresentarMenu();
 
+                if (tela is TelaEmprestimo telaEmprestimo)               
+                    GerenciarEmprestimos(operacaoEscolhida, telaEmprestimo);
+                
+                else if (tela is TelaReserva telaReserva)               
+                    GerenciarReservas(operacaoEscolhida, telaReserva);                
+
                 if (operacaoEscolhida == 'S')
-                    continue;
+                        continue;
 
                 if (operacaoEscolhida == '1')
                     tela.Registrar();
@@ -116,16 +60,43 @@ namespace ClubeDaLeitura.ConsoleApp
                 else if (operacaoEscolhida == '4')
                     tela.VisualizarRegistros(true);
 
-                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '5')
+                else if (operacaoEscolhida == '5' && tela is TelaAmigo telaAmigo)
                     telaEmprestimo.Devolucao();
 
-                else if (operacaoEscolhida == '5' && opcaoPrincipalEscolhida == '1')
+                else if (operacaoEscolhida == '5' && tela is TelaAmigo telaAmigo)
                     telaAmigo.VisualizarRegistrosComMultas(true);
 
-                else if (operacaoEscolhida == '6' && opcaoPrincipalEscolhida == '1')
+             //   else if (operacaoEscolhida == '6' && opcaoPrincipalEscolhida == '1')
+             //       telaAmigo.QuitarMulta();
+                
+                else if (operacaoEscolhida == '6' && tela is TelaAmigo telaAmigo)
                     telaAmigo.QuitarMulta();
             }
             Console.ReadLine();
+        }
+
+        private static void GerenciarReservas(char operacaoEscolhida, TelaReserva telaReserva)
+        {
+            if (operacaoEscolhida == '1')
+                telaReserva.Registrar();
+
+            else if (operacaoEscolhida == 2)
+                telaReserva.RealizarEmprestimo();
+
+            else if (operacaoEscolhida == '2')
+                telaReserva.VisualizarRegistros(true);
+        }
+
+        private static void GerenciarEmprestimos(char operacaoEscolhida, TelaEmprestimo telaEmprestimo)
+        {
+            if (operacaoEscolhida == '1')
+                telaEmprestimo.Registrar();
+
+            if (operacaoEscolhida == '2')
+                telaEmprestimo.Devolucao();
+
+            if (operacaoEscolhida == '3')
+                telaEmprestimo.VisualizarRegistros(true);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
 {
-    internal class TelaRevista : TelaBase
+    internal class TelaRevista : TelaBase<Revista>, ITelaCadastravel
     {
         public TelaCaixa telaCaixa = null;
         public RepositorioCaixa repositorioCaixa = null;
@@ -24,7 +24,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
                 "Id", "Título", "Edição", "Ano de publicação", "Caixa", "Emprestado"
             );
 
-            List<EntidadeBase> revistasCadastradas = repositorio.SelecionarTodos();
+            List<Revista> revistasCadastradas = repositorio.SelecionarTodos();
 
             foreach (Revista revista in revistasCadastradas)
             {
@@ -41,7 +41,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloRevista
             Console.ReadLine();
             Console.WriteLine();
         }
-        protected override EntidadeBase ObterRegistro()
+        protected override Revista ObterRegistro()
         {
             Console.Write("Digite o titulo da revista: ");
             string titulo = Console.ReadLine();

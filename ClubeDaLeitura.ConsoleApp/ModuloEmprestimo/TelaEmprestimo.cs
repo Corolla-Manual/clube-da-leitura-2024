@@ -5,7 +5,7 @@ using System.Collections;
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
 {
-    internal class TelaEmprestimo : TelaBase
+    internal class TelaEmprestimo : TelaBase<Emprestimo>, ITelaCadastravel
     {
         public TelaAmigo telaAmigo = null;
         public TelaRevista telaRevista = null;
@@ -28,7 +28,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
             );
 
-            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<Emprestimo> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {
@@ -47,7 +47,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
             Console.WriteLine();
         }
 
-        protected override EntidadeBase ObterRegistro()
+        protected override Emprestimo ObterRegistro()
         {
             telaAmigo.VisualizarRegistros(false);
             Console.Write("Digite o ID do Amigo: ");
@@ -158,7 +158,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista"
             );
 
-            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<Emprestimo> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {
@@ -194,7 +194,7 @@ namespace ClubeDaLeitura.ConsoleApp.ModuloEmprestimo
                 "Id", "Data de Empréstimo", "Data de Devolução", "Amigo", "Revista", "Concluido"
             );
 
-            List<EntidadeBase> emprestimosCadastradas = repositorio.SelecionarTodos();
+            List<Emprestimo> emprestimosCadastradas = repositorio.SelecionarTodos();
 
             foreach (Emprestimo emprestimo in emprestimosCadastradas)
             {

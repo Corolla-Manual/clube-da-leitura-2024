@@ -2,7 +2,7 @@
 
 namespace ClubeDaLeitura.ConsoleApp.ModuloCaixa
 {
-    internal class RepositorioCaixa : RepositorioBase
+    internal class RepositorioCaixa : RepositorioBase<Caixa>
     {
     }
 }
